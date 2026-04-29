@@ -128,13 +128,16 @@ app.get('/health', async (request, reply) => {
         signal: AbortSignal.timeout(3000),
       });
       const data = await response.json();
+      console.log(`Verificando saúde de ${name} em ${url}/health, com resposta:`, data);
+
       results[name] = { status: 'up', ...data };
     } catch {
+      console.error(`Falha ao verificar saúde de ${name} em ${url}/health`);
       results[name] = { status: 'down' };
     }
   }
 
-  const allUp = Object.values(results).every(r => r.status === 'up');
+  const allUp = Object.values(results).every(r => r.status === 'ok');
 
   return reply.code(allUp ? 200 : 503).send({
     service: 'gateway',
