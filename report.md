@@ -99,3 +99,20 @@ streaming-service-1  | {"level":30,"time":1777472892124,"pid":1,"hostname":"4fec
 Isso prova o "fail silencioso": o usuário recebe resposta de sucesso, mas a notificação falhou. O problema é que se o timeout fosse menor ou a falha fosse no catalog (não no notification), o Play inteiro falharia.
 
 
+Cenário 3 - banco compartilhado
+Inicialmente, paro o serviço:
+docker compose stop billing-service
+
+
+![alt text](report/parando-servico.png)
+
+
+
+Consumindo:
+
+`GET http://localhost:8080/api/analytics/report`
+
+![alt text](report/analytics-report.png)
+
+
+O analytics ainda funciona porque lê o banco diretamente, sem passar pela API do billing. Isso demonstra o acoplamento pelo banco.
