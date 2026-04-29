@@ -94,3 +94,8 @@ streaming-service-1  | {"level":40,"time":1777472892120,"pid":1,"hostname":"4fec
 streaming-service-1  | {"level":30,"time":1777472892124,"pid":1,"hostname":"4fec1bb66af7","reqId":"req-5","res":{"statusCode":201},"responseTime":21.539079999551177,"msg":"request completed"}
 
 ```
+
+
+Isso prova o "fail silencioso": o usuário recebe resposta de sucesso, mas a notificação falhou. O problema é que se o timeout fosse menor ou a falha fosse no catalog (não no notification), o Play inteiro falharia.
+
+
