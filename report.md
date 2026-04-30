@@ -1,7 +1,7 @@
-# StreamFlow -
+# StreamFlow — Análise Crítica de Arquitetura de Microsserviços
 
-**Integrantes:** Igor, Leopoldo e Wagner
-
+**Disciplina:** Serviços Web  
+**Entrega:** 08/05/2026
 
 ---
 
@@ -21,7 +21,7 @@ sudo docker compose up --build
 
 ![Serviços subindo](report/subindo_docker.png)
 
-### Bug encontrado no gateway 
+### Bug encontrado no gateway — e corrigido
 
 Ao consumir o health check do gateway logo após subir, o endpoint retornou erro:
 
@@ -34,7 +34,7 @@ GET http://localhost:8080/health
 A causa foi identificada diretamente no código do gateway:
 
 ```js
-// Código original
+// Código original — com bug
 const allUp = Object.values(results).every(r => r.status === 'up');
 ```
 
@@ -49,7 +49,7 @@ Após a correção, o health check passou a responder corretamente:
 
 ![Gateway OK](report/gateway-ok.png)
 
-> **Observação:** esse bug revela um problema de observabilidade real. A equipe poderia estar monitorando um endpoint que sempre reporta degradação sem perceber, criando ruído nos alertas e falsa sensação de problema constante.
+> **Observação:** esse bug revela um problema de observabilidade real — a equipe poderia estar monitorando um endpoint que sempre reporta degradação sem perceber, criando ruído nos alertas e falsa sensação de problema constante.
 
 ### Autenticação
 
