@@ -2,7 +2,7 @@
 
 **Disciplina:** Serviços Web  
 **Entrega:** 08/05/2026
-
+**Alunos:**  Igor, Leopoldo e Wagner. 
 ---
 
 ## Preparação do Ambiente
